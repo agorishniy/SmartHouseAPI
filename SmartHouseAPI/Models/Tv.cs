@@ -18,8 +18,8 @@
         public int VolumeId { get; set; }
 
         public Param Volume { get; set; }
- 
-        public void NextChannel()
+
+        public int NextChannel()
         {
             if ((int)Channel < System.Enum.GetValues(typeof(Channels)).Length - 1)
             {
@@ -29,9 +29,10 @@
             {
                 Channel = 0;
             }
+            return (int)Channel;
         }
 
-        public void PreviousChannel()
+        public int PreviousChannel()
         {
             if ((int)Channel > 0)
             {
@@ -41,6 +42,7 @@
             {
                 Channel = (Channels)(System.Enum.GetValues(typeof(Channels)).Length - 1);
             }
+            return (int)Channel;
         }
     }
 }

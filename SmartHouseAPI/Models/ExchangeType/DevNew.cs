@@ -5,9 +5,9 @@ using System.Web;
 
 namespace SmartHouseMVC4.Models
 {
-    public class SendParam
+    public class DevNew
     {
+        public string Name { set; get; }
         public string Type { set; get; }
-        public string Param { set; get; }
     }
 }

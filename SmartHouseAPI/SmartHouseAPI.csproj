@@ -170,6 +170,8 @@
     </Compile>
     <Compile Include="Models\Channels.cs" />
     <Compile Include="Models\Device.cs" />
+    <Compile Include="Models\ExchangeType\DevParam.cs" />
+    <Compile Include="Models\ExchangeType\DevNew.cs" />
     <Compile Include="Models\Fan.cs" />
     <Compile Include="Models\Interface\IDevice.cs" />
     <Compile Include="Models\Interface\IDevOpen.cs" />
@@ -180,7 +182,7 @@
     <Compile Include="Models\ModelContext.cs" />
     <Compile Include="Models\ModelInit.cs" />
     <Compile Include="Models\Param.cs" />
-    <Compile Include="Models\SendParam.cs" />
+    <Compile Include="Models\ExchangeType\DevInfo.cs" />
     <Compile Include="Models\Tv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -24,16 +24,32 @@ namespace SmartHouse.Models
 
         public byte Value  { get; set; }
  
-        public void Up()
+        // -1 - error
+        public int Up()
         {
             if (Value < Max)
+            {
                 Value++;
+                return Value;
+            }
+            else
+            {
+                return -1;
+            }
         }
 
-        public void Down()
+        // -1 - error
+        public int Down()
         {
             if (Value > Min)
+            {
                 Value--;
+                return Value;
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }

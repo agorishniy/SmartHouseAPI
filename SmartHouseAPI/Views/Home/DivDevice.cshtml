@@ -3,7 +3,7 @@
 @*Header of device*@
 <div class="device-status-header">
     @{string sType = Model.GetType().Name;}
-    <img class="device-status-icon" src="../Content/images/@Html.Raw(sType)_3.png" alt="Device's icon" />
+    <img class="device-status-icon" src="../Content/images/@Html.Raw(sType)_icon.png" alt="Device's icon" />
     <span class="device-status-name">@Model.Name</span>
     <a class="device-status-btn-del" href="" data-id="@Model.Id" data-type="@sType">
         <img class="device-status-img-del" src="../Content/images/del_green_2.png" alt="Delete" />
@@ -44,7 +44,7 @@
             break;
         case "Tv":
             if (Model.State)
-            { sImgFile = "tv_" + ((Tv)Model).Channel.ToString() + ".png"; }
+            { sImgFile = "tv_" + ((int)((Tv)Model).Channel).ToString() + ".png"; }
             else
             { sImgFile = "tv_off.png"; }
             break;
@@ -113,7 +113,7 @@
         <div class="div-status-block div-program">
             <div class="div-param-text">
                 <span class="device-status-name">Program</span>
-                <img class="device-div-prog-state" src="../Content/images/icon_@Html.Raw(((Tv)Model).Channel.ToString() + ".png")" />
+                <img class="device-div-prog-state" src="../Content/images/tv_icon_@Html.Raw(((int)((Tv)Model).Channel).ToString() + ".png")" />
             </div>
             <div class="div-param-btn div-param-btn-prog">
                 <a class="btn-down" href="" data-id="@Model.Id" data-type="@sType" data-param="Program">

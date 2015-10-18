@@ -15,45 +15,24 @@ namespace WebApplication1
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}/",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "ApiOnOff",
-                routeTemplate: "api/{controller}/onoff/{id}"
+                routeTemplate: "api/{controller}/onoff"
             );
 
             config.Routes.MapHttpRoute(
                 name: "ApiParam",
-                routeTemplate: "api/{controller}/param/{id}/{type}/{cmd}"
+                routeTemplate: "api/{controller}/param"
             );
 
-            config.Routes.MapHttpRoute(
-                name: "ApiDel",
-                routeTemplate: "api/{controller}/del/{id}/{type}"
-            );
-
-
             //config.Routes.MapHttpRoute(
-            //    name: "ApiOnOffLamp",
-            //    routeTemplate: "api/{controller}/lamp/{id}"
-            //);
-
-            //config.Routes.MapHttpRoute(
-            //    name: "ApiOnOffFan",
-            //    routeTemplate: "api/{controller}/fan/{id}"
-            //);
-
-            //config.Routes.MapHttpRoute(
-            //    name: "ApiOnOffLouvers",
-            //    routeTemplate: "api/{controller}/louvers/{id}"
-            //);
-
-            //config.Routes.MapHttpRoute(
-            //    name: "ApiOnOffTv",
-            //    routeTemplate: "api/{controller}/tv/{id}"
-            //);
-
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
+            //    name: "ApiDel",
+            //    routeTemplate: "api/{controller}/del/"
             //);
 
         }
