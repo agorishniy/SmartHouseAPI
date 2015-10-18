@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+}
+@using SmartHouse.Models;
+@model IEnumerable<IDevice>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SmartHouse</title>
+    <link rel="stylesheet" type="text/css" href="../Content/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/style.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+        </div>
+
+        <div class="main">
+            <div id="LeftCol" class="left-col">
+                <h1>Add device</h1>
+                <h2>1. Input name of new device:</h2>
+                <input name="NameOfNewDevice" type="text" id="NameOfNewDevice" class="name-of-new-device" />
+                <h2>2. Choose type of new device:</h2>
+                <a class="btn-add" href="" data-type="Lamp">
+                    <div class="add-device">
+                        <h3>LAMP</h3>
+                        <img class="add-icon" src="../Content/images/lamp_3.png" />
+                    </div>
+                </a>
+                <a class="btn-add" href="" data-type="Fan">
+                    <div class="add-device">
+                        <h3>FAN</h3>
+                        <img class="add-icon" src="../Content/images/fan_3_1.png" />
+                    </div>
+                </a>
+                <a class="btn-add" href="" data-type="Louvers">
+                    <div class="add-device">
+                        <h3>LOUVERS</h3>
+                        <img class="add-icon" src="../Content/images/louvers_3.png" />
+                    </div>
+                </a>
+                <a class="btn-add" href="" data-type="Tv">
+                    <div class="add-device">
+                        <h3>TV</h3>
+                        <img class="add-icon" src="../Content/images/tv_3.png" />
+                    </div>
+                </a>
+            </div>
+
+            <div id="RightCol" class="right-col">
+                @foreach (var dev in Model)
+                {
+                    <div class="device-status">
+                        @Html.Partial("DivDevice", dev)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../Content/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../Content/js/main.js"></script>
+</body>
+</html>

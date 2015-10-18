@@ -1,0 +1,149 @@
+﻿@using SmartHouse.Models;
+@model SmartHouse.Models.IDevice
+@*Header of device*@
+<div class="device-status-header">
+    @{string sType = Model.GetType().Name;}
+    <img class="device-status-icon" src="../Content/images/@Html.Raw(sType)_3.png" alt="Device's icon" />
+    <span class="device-status-name">@Model.Name</span>
+    <a class="device-status-btn-del" href="" data-id="@Model.Id" data-type="@sType">
+        <img class="device-status-img-del" src="../Content/images/del_green_2.png" alt="Delete" />
+    </a>
+</div>
+
+@*State of device*@
+<div class="device-div-on-off div-state">
+    @if (Model.State == true)
+    {
+        <span class="device-state">State: ON</span>
+    }
+    else
+    {
+        <span class="device-state">State: OFF</span>
+    }
+
+    @{var sImgFile = "";
+    switch (sType)
+    {
+        case "Lamp":
+            if (Model.State)
+            { sImgFile = "lamp_on.png"; }
+            else
+            { sImgFile = "lamp_off.png"; }
+            break;
+        case "Fan":
+            if (Model.State)
+            { sImgFile = "fan_" + ((Fan)Model).Speed.Value.ToString() + ".gif"; }
+            else
+            { sImgFile = "fan_off.png"; }
+            break;
+        case "Louvers":
+            if (Model.State)
+            { sImgFile = "louvers_" + ((Louvers)Model).Open.Value.ToString() + ".png"; }
+            else
+            { sImgFile = "louvers_off.png"; }
+            break;
+        case "Tv":
+            if (Model.State)
+            { sImgFile = "tv_" + ((Tv)Model).Channel.ToString() + ".png"; }
+            else
+            { sImgFile = "tv_off.png"; }
+            break;
+    }
+    }
+    <img class="device-image" src="../Content/images/@Html.Raw(sImgFile)" />
+</div>
+
+@if (Model.State)
+{
+    if (Model is IDevSpeed)
+    {
+        <div class="div-status-block div-speed">
+            <div class="div-param-text">
+                <span class="device-status-name">Speed</span>
+            </div>
+            <div class="div-param-btn">
+                <a class="btn-down" href="" data-id="@Model.Id" data-type="@sType" data-param="Speed">
+                    <img class="device-div-speed-img" src="../Content/images/btn_down.png" />
+                </a>
+                <img class="device-div-speed-state" src="../Content/images/val_@Html.Raw(((Fan)Model).Speed.Value + ".png")" />
+                <a class="btn-up" href="" data-id="@Model.Id" data-type="@sType" data-param="Speed">
+                    <img class="device-div-speed-img" src="../Content/images/btn_up.png" />
+                </a>
+            </div>
+        </div>
+    }
+
+    if (Model is IDevVolume)
+    {
+        <div class="div-status-block div-volume">
+            <div class="div-param-text">
+                <span class="device-status-name">Volume</span>
+            </div>
+            <div class="div-param-btn">
+                <a class="btn-down" href="" data-id="@Model.Id" data-type="@sType" data-param="Volume">
+                    <img class="device-div-speed-img" src="../Content/images/btn_down.png" />
+                </a>
+                <img class="device-div-speed-state" src="../Content/images/val_@Html.Raw(((Tv)Model).Volume.Value + ".png")" />
+                <a class="btn-up" href="" data-id="@Model.Id" data-type="@sType" data-param="Volume">
+                    <img class="device-div-speed-img" src="../Content/images/btn_up.png" />
+                </a>
+            </div>
+        </div>
+    }
+
+    if (Model is IDevOpen)
+    {
+        <div class="div-status-block div-open">
+            <div class="div-param-text">
+                <span class="device-status-name">Open: @Html.Raw((50 * ((Louvers)Model).Open.Value).ToString())%</span>
+            </div>
+            <div class="div-param-btn">
+                <a class="btn-down" href="" data-id="@Model.Id" data-type="@sType" data-param="Open">
+                    <img class="device-div-speed-img" src="../Content/images/btn_down.png" />
+                </a>
+                <a class="btn-up" href="" data-id="@Model.Id" data-type="@sType" data-param="Open">
+                    <img class="device-div-speed-img" src="../Content/images/btn_up.png" />
+                </a>
+            </div>
+        </div>
+    }
+
+    if (Model is Tv)
+    {
+        <div class="div-status-block div-program">
+            <div class="div-param-text">
+                <span class="device-status-name">Program</span>
+                <img class="device-div-prog-state" src="../Content/images/icon_@Html.Raw(((Tv)Model).Channel.ToString() + ".png")" />
+            </div>
+            <div class="div-param-btn div-param-btn-prog">
+                <a class="btn-down" href="" data-id="@Model.Id" data-type="@sType" data-param="Program">
+                    <img class="device-div-speed-img" src="../Content/images/btn_down.png" />
+                </a>
+                <a class="btn-up" href="" data-id="@Model.Id" data-type="@sType" data-param="Program">
+                    <img class="device-div-speed-img" src="../Content/images/btn_up.png" />
+                </a>
+            </div>
+        </div>
+    }
+}
+
+@*Turn on/off*@
+<div class="device-div-on-off">
+    <div class="device-div-on-off-left">
+        <span class="device-status-name">Turn on/off</span>
+    </div>
+    <div class="device-div-on-off-right">
+        <a class="device-div-on-off-cmd-btn" href="" data-id="@Model.Id" data-type="@sType">
+            @if (Model.State == true)
+            {
+                <img class="device-div-on-off-cmd-img" src="../Content/images/btn_on.png" />
+            }
+            else
+            {
+                <img class="device-div-on-off-cmd-img" src="../Content/images/btn_off.png" />
+            }
+        </a>
+    </div>
+</div>
+
+
