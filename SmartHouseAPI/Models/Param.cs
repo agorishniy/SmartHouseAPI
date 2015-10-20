@@ -10,7 +10,7 @@ namespace SmartHouse.Models
         public Param()
         {
         }
-        public Param(byte valueCurrent, byte minVal, byte maxVal)
+        public Param(int valueCurrent, int minVal, int maxVal)
         {
             Min = minVal;
             Max = maxVal;
@@ -18,11 +18,11 @@ namespace SmartHouse.Models
         }
 
         public int Id { set; get; }
-        public byte Min { get; set; }
+        public int Min { get; set; }
 
-        public byte Max { get; set; }
+        public int Max { get; set; }
 
-        public byte Value  { get; set; }
+        public int Value  { get; set; }
  
         // -1 - error
         public int Up()

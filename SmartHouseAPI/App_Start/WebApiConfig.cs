@@ -16,25 +16,9 @@ namespace WebApplication1
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}/",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{id}/{type}/",
+                defaults: new { id = RouteParameter.Optional, type = RouteParameter.Optional }
             );
-
-            config.Routes.MapHttpRoute(
-                name: "ApiOnOff",
-                routeTemplate: "api/{controller}/onoff"
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "ApiParam",
-                routeTemplate: "api/{controller}/param"
-            );
-
-            //config.Routes.MapHttpRoute(
-            //    name: "ApiDel",
-            //    routeTemplate: "api/{controller}/del/"
-            //);
-
         }
     }
 }

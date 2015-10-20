@@ -106,10 +106,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SmartDB.mdf" />
-    <Content Include="App_Data\SmartDB_log.ldf">
-      <DependentUpon>SmartDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\fonts\Europe Normal.svg" />
     <Content Include="Content\images\btn_down.png" />
     <Content Include="Content\images\btn_off.png" />
@@ -202,7 +198,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

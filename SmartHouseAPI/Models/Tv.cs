@@ -6,7 +6,7 @@
         {
         }
 
-        public Tv(string nameTv, bool stateTv, Channels channelCur, byte volumeCur)
+        public Tv(string nameTv, bool stateTv, Channels channelCur, sbyte volumeCur)
             : base(nameTv, stateTv)
         {
             Channel = channelCur;

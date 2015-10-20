@@ -7,7 +7,7 @@
 
         }
 
-        public Fan(string nameDev, bool stateDev, byte speedFan)
+        public Fan(string nameDev, bool stateDev, sbyte speedFan)
             : base(nameDev, stateDev)
         {
             Speed = new Param(speedFan, 1, 5);

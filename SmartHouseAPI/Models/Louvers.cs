@@ -5,7 +5,7 @@
         public Louvers()
         {
         }
-        public Louvers(string nameDev, bool stateDev, byte openPercent)
+        public Louvers(string nameDev, bool stateDev, sbyte openPercent)
             : base(nameDev, stateDev)
         {
             Open = new Param(openPercent, 0, 2);
